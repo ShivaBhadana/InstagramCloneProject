@@ -34,7 +34,7 @@ fun uploadVideo(uri: Uri,
             callback(imageUrl)
         }
     }.addOnProgressListener {
-        var uploadedvalue: Long = it.bytesTransferred/it.totalByteCount
+        var uploadedvalue: Long = (it.bytesTransferred/it.totalByteCount)*100
         progressDialog.setMessage("Uploaded $uploadedvalue %")
     }
 }

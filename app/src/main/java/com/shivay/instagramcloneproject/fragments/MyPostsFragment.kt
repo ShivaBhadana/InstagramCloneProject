@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -29,7 +30,7 @@ class MyPostsFragment : Fragment() {
         binding = FragmentMyPostsBinding.inflate(inflater, container, false)
         var postList = ArrayList<Post>()
         var adapter = MyPostRvAdapter(requireContext(), postList)
-        binding.rv.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        binding.rv.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.rv.adapter = adapter
         Firebase.firestore.collection(Firebase.auth.currentUser!!.uid).get().addOnSuccessListener {
             var tempList = arrayListOf<Post>()
